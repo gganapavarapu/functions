@@ -15,30 +15,30 @@ logger = logging.getLogger(__name__)
 # Specify the URL to your package here.
 # This URL must be accessible via pip install
 
-PACKAGE_URL = 'git+https://github.com/madendorff/functions@'
+PACKAGE_URL = 'git+https://github.com/gganapavarapu/functions@'
 
-class HelloWorld(BaseTransformer):
+class HelloWorldGG(BaseTransformer):
 
     '''
     The docstring of the function will show as the function description in the UI. 
     '''
 
-    def __init__(self,name,greeting_col):
+    def __init__(self,name,output_col):
 
         # a function is expected to have at least one parameter that acts
         # as an input argument, e.g. "name" is an argument that represents the
-        # name to be used in the greeting. It is an "input" as it is something
+        # name to be used in the output. It is an "input" as it is something
         # that the function needs to execute.
 
         # a function is expected to have at lease one parameter that describes
-        # the output data items produced by the function, e.g. "greeting_col"
+        # the output data items produced by the function, e.g. "output_col"
         # is the argument that asks what data item name should be used to
         # deliver the functions outputs
 
         # always create an instance variable with the same name as your arguments
 
         self.name = name
-        self.greeting_col = greeting_col
+        self.output_col = output_col
         super().__init__()
 
         # do not place any business logic in the __init__ method
@@ -51,7 +51,7 @@ class HelloWorld(BaseTransformer):
         # the output dataframe is expected to produce at least one new output column
 
 
-        df[self.greeting_col] = 'Hello %s' %self.name
+        df[self.output_col] = 'Hello %s! How are you?' %self.name
 
         # If the function has no new output data, output a status_flag instead
         # e.g. df[<self.output_col_arg>> = True
@@ -73,7 +73,7 @@ class HelloWorld(BaseTransformer):
         ]
         outputs = [
             ui.UIFunctionOutSingle(
-                name='greeting_col',
+                name='output_col',
                 datatype=str,
                 description='Output item produced by function')
         ]
