@@ -9,3 +9,5 @@ ibm_db_sa
 ibm_cos_sdk
 lxml
 git+git://github.com/ibm-watson-iot/functions.git@production#egg=iotfunctions
+--extra-index-url https://srompypyproxy.mybluemix.net/23537570-defd-4876-abde-68be94d9e26e
+srom[utils,core,preprocessing]==1.2.0rc12
