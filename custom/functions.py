@@ -5,6 +5,7 @@ import math
 from sqlalchemy.sql.sqltypes import TIMESTAMP,VARCHAR
 import numpy as np
 import pandas as pd
+import srom
 
 from iotfunctions.base import BaseTransformer
 from iotfunctions import ui
@@ -51,7 +52,8 @@ class HelloWorldGG(BaseTransformer):
         # the output dataframe is expected to produce at least one new output column
 
 
-        df[self.output_col] = 'Hello %s! How are you?' %self.name
+        srom_version = srom.__version__
+        df[self.output_col] = "Hello {}! How are you? your srom version is {}".format(self.name, srom_version)
 
         # If the function has no new output data, output a status_flag instead
         # e.g. df[<self.output_col_arg>> = True
