@@ -53,15 +53,19 @@ class HelloWorldGG(BaseTransformer):
         # the execute() method accepts a dataframe as input and returns a dataframe as output
         # the output dataframe is expected to produce at least one new output column
 
-        print("srom pre version")
-        package = "https://srompypyproxy.mybluemix.net/{}".format(self.token)
-        pip(["install",
-                  "--extra-index-url",
-                  package,
-                  "srom[utils,core,preprocessing]==1.2.0rc12"])
-        srom_version = srom.__version__
-        print("srom version: ", srom_version)
-        df[self.output_col] = "Hello {}! How are you? your srom version is {}".format(self.name, srom_version)
+        try:
+            print("srom pre version")
+            logger.error("no error srom")
+            package = "https://srompypyproxy.mybluemix.net/{}".format(self.token)
+            pip(["install",
+                    "--extra-index-url",
+                    package,
+                    "srom[utils,core,preprocessing]==1.2.0rc12"])
+            srom_version = srom.__version__
+            print("srom version: ", srom_version)
+            df[self.output_col] = "Hello {}! How are you? your srom version is {}".format(self.name, srom_version)
+        except Exception as ex:
+            logger.error("Error while executing HelloWorldGG: {}".format(ex))
 
         # If the function has no new output data, output a status_flag instead
         # e.g. df[<self.output_col_arg>> = True
