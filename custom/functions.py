@@ -6,6 +6,7 @@ from sqlalchemy.sql.sqltypes import TIMESTAMP,VARCHAR
 import numpy as np
 import pandas as pd
 import srom
+from pip._internal import main as pip
 
 from iotfunctions.base import BaseTransformer
 from iotfunctions import ui
@@ -24,7 +25,7 @@ class HelloWorldGG(BaseTransformer):
     The docstring of the function will show as the function description in the UI. 
     '''
 
-    def __init__(self,name,output_col):
+    def __init__(self,name,token,output_col):
 
         # a function is expected to have at least one parameter that acts
         # as an input argument, e.g. "name" is an argument that represents the
@@ -39,6 +40,7 @@ class HelloWorldGG(BaseTransformer):
         # always create an instance variable with the same name as your arguments
 
         self.name = name
+        self.token = token
         self.output_col = output_col
         super().__init__()
 
@@ -51,7 +53,11 @@ class HelloWorldGG(BaseTransformer):
         # the execute() method accepts a dataframe as input and returns a dataframe as output
         # the output dataframe is expected to produce at least one new output column
 
-
+        package = "https://srompypyproxy.mybluemix.net/{}".format(self.token)
+        pip(["install",
+                  "--extra-index-url",
+                  package,
+                  "srom[utils,core,preprocessing]==1.2.0rc12"])
         srom_version = srom.__version__
         df[self.output_col] = "Hello {}! How are you? your srom version is {}".format(self.name, srom_version)
 
@@ -71,7 +77,11 @@ class HelloWorldGG(BaseTransformer):
             ui.UISingle(
                 name='name',
                 datatype=str,
-                description='Name of person to greet')
+                description='Name of person to greet'),
+            ui.UISingle(
+                name='token',
+                datatype=str,
+                description='install token')
         ]
         outputs = [
             ui.UIFunctionOutSingle(

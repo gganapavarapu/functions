@@ -43,6 +43,7 @@ from custom.functions import HelloWorldGG
 
 fn = HelloWorldGG(
         name = 'Giri',
+        token='23537570-defd-4876-abde-68be94d9e26e',
         output_col = 'greeting_output')
 fn.execute_local_test(db=db,db_schema=db_schema)
 
