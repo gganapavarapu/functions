@@ -5,7 +5,6 @@ import math
 from sqlalchemy.sql.sqltypes import TIMESTAMP,VARCHAR
 import numpy as np
 import pandas as pd
-import srom
 from pip._internal import main as pip
 
 from iotfunctions.base import BaseTransformer
@@ -61,6 +60,7 @@ class HelloWorldGG(BaseTransformer):
                     "--extra-index-url",
                     package,
                     "srom[utils,core,preprocessing]==1.2.0rc12"])
+            import srom
             srom_version = srom.__version__
             print("srom version: ", srom_version)
             df[self.output_col] = "Hello {}! How are you? your srom version is {}".format(self.name, srom_version)
