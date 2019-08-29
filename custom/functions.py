@@ -60,11 +60,11 @@ class HelloWorldGG(BaseTransformer):
             #         "--extra-index-url",
             #         package,
             #         "srom[utils,core,preprocessing]==1.2.0rc12"])
-            # import srom
-            # srom_version = srom.__version__
+            import srom
+            srom_version = srom.__version__
             # print("srom version: ", srom_version)
-            # df[self.output_col] = "Hello {}! How are you? your srom version is {}".format(self.name, srom_version)
-            df[self.output_col] = "Hello {}! How are you?".format(self.name)
+            df[self.output_col] = "Hello {}! How are you? your srom version is {}".format(self.name, srom_version)
+            # df[self.output_col] = "Hello {}! How are you?".format(self.name)
         except Exception as ex:
             logger.error("Error while executing HelloWorldGG: {}".format(ex))
 
