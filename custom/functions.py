@@ -55,11 +55,13 @@ class HelloWorldGG(BaseTransformer):
         try:
             print("srom pre version")
             logger.error("no error srom")
-            # package = "https://srompypyproxy.mybluemix.net/{}".format(self.token)
-            # pip(["install",
-            #         "--extra-index-url",
-            #         package,
-            #         "srom[utils,core,preprocessing]==1.2.0rc12"])
+            if(self.token):
+                logger.error("No SROM token")
+            package = "https://srompypyproxy.mybluemix.net/{}".format(self.token)
+            pip(["install",
+                    "--extra-index-url",
+                    package,
+                    "srom[utils,core,preprocessing]==1.2.0rc12"])
             import srom
             srom_version = srom.__version__
             # print("srom version: ", srom_version)
