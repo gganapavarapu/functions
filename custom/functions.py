@@ -55,7 +55,7 @@ class HelloWorldGG(BaseTransformer):
         try:
             print("srom pre version")
             logger.error("no error srom")
-            package = "https://srompypyproxy.mybluemix.net/{}".format(self.token)
+            # package = "https://srompypyproxy.mybluemix.net/{}".format(self.token)
             # pip(["install",
             #         "--extra-index-url",
             #         package,
@@ -63,7 +63,12 @@ class HelloWorldGG(BaseTransformer):
             import srom
             srom_version = srom.__version__
             # print("srom version: ", srom_version)
-            df[self.output_col] = "Hello {}! How are you? your srom version is {}".format(self.name, srom_version)
+            msg = "test"
+            if(self.name is None):
+                msg = "Hello! How are you? your srom version is {}".format(srom_version)
+            else:
+                msg = "Hello {}! How are you? your srom version is {}".format(self.name, srom_version)
+            df[self.output_col] = msg
             # df[self.output_col] = "Hello {}! How are you?".format(self.name)
         except Exception as ex:
             logger.error("Error while executing HelloWorldGG: {}".format(ex))
