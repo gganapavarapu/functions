@@ -57,7 +57,7 @@ class HelloWorldGG(BaseTransformer):
             logger.error("no error srom")
             if(not self.token):
                 logger.error("No SROM token")
-            package = "https://srompypyproxy.mybluemix.net/{}".format(self.token)
+            # package = "https://srompypyproxy.mybluemix.net/{}".format(self.token)
             # pip(["install",
             #         "--extra-index-url",
             #         package,
