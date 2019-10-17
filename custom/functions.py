@@ -53,41 +53,12 @@ class HelloWorldGG(BaseTransformer):
         # the output dataframe is expected to produce at least one new output column
 
         try:
-            print("srom pre version")
-            logger.error("no error srom")
-            couch_version = 0.0
-            # if(not self.token):
-            #     logger.error("No SROM token")
-            # # package = "https://srompypyproxy.mybluemix.net/{}".format(self.token)
-            # # pip(["install",
-            # #         "--extra-index-url",
-            # #         package,
-            # #         "srom[utils,core,preprocessing]==1.2.0rc12"])
-            # # import srom
-            # # srom_version = srom.__version__
-            # # print("srom version: ", srom_version)
-            # try:
-            #     import couchdb
-            # except:
-            #     logger.error("couchdb not found")
-            #     pip(["install",
-            #          "CouchDB"])
-            #     import couchdb
-            
-            # couch_version = couchdb.__version__
-            msg = "test"
-            if(self.name is None):
-                msg = "Hello! How are you? your couchdb version is {}".format(couch_version)
-            else:
-                msg = "Hello {}! How are you? your couchdb version is {}".format(self.name, couch_version)
+            msg = "Hello! How are you?"
             logger.error(msg)
             df[self.output_col] = msg
             # df[self.output_col] = "Hello {}! How are you?".format(self.name)
         except Exception as ex:
             logger.error("Error while executing HelloWorldGG: {}".format(ex))
-
-        # If the function has no new output data, output a status_flag instead
-        # e.g. df[<self.output_col_arg>> = True
 
         return df
 
