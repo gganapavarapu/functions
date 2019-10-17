@@ -2,6 +2,7 @@ import inspect
 import logging
 import datetime as dt
 import math
+import copy
 from sqlalchemy.sql.sqltypes import TIMESTAMP,VARCHAR
 import numpy as np
 import pandas as pd
@@ -53,6 +54,8 @@ class HelloWorldGG(BaseTransformer):
         # the output dataframe is expected to produce at least one new output column
 
         try:
+            obj = {"a": a, "b": b}
+            obj_copy = copy.deepcopy(obj)
             msg = "Hello! How are you?"
             logger.error(msg)
             df[self.output_col] = msg
