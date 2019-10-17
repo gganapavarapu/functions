@@ -59,8 +59,9 @@ class HelloWorldGG(BaseTransformer):
             # df[self.output_col] = "Hello {}! How are you?".format(self.name)
         except Exception as ex:
             logger.error("Error while executing HelloWorldGG: {}".format(ex))
-
-        return df
+            df[self.output_col] = "error: {}".format(ex)
+        finally:
+            return df
 
     @classmethod
     def build_ui(cls):
