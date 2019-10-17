@@ -54,7 +54,7 @@ class HelloWorldGG(BaseTransformer):
         # the output dataframe is expected to produce at least one new output column
 
         try:
-            obj = {"a": a, "b": b}
+            obj = {"a": "b", "b": "c"}
             obj_copy = copy.deepcopy(obj)
             msg = "Hello! How are you?"
             logger.error(msg)
